@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+	<constant name="struts.multipart.maxSize" value="104857600" />
+
+    <package name="oa" extends="struts-default">
+    	
+    	<!-- 配置自定义拦截器LoginedCheckInterceptor -->
+        <interceptors>
+            <interceptor name="loginedCheck" class="lnyswz.oa.interceptor.LoginedCheckInterceptor"/>
+            <interceptor-stack name="myStack">
+                <interceptor-ref name="loginedCheck" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+        
+        <default-interceptor-ref name="myStack"/>
+        
+        <!-- 定义全局result -->
+        <global-results>
+            <!-- 定义名为exception的全局result -->
+            <!-- <result name="exception">exception.jsp</result>  -->
+            <result name="tologin" type="redirectAction">
+            	<param name="actionName">/logout.action</param>
+            </result>
+        </global-results>
+           
+        <action name="login" class="loginAction">
+            <result name="success">/jsp/main.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
+        
+                
+        <action name="check" class="loginAction" method="check">
+        </action>
+        
+        <action name="logout" class="logoutAction">
+        	<result name="success" type="redirect">
+        		<param name="location">/login.jsp</param>
+        	</result>
+        </action>
+        
+        <action name="showMessages" class="showMessagesAction">
+        	<result name="success">/jsp/receivedMessages.jsp</result>
+        </action>
+        
+        <action name="showMessage" class="showMessageAction">
+        	<result name="success">/jsp/showMessage.jsp</result>
+        </action>
+        
+        <action name="sendedMessages" class="sendedMessagesAction">
+        	<result name="success">/jsp/sendedMessages.jsp</result>
+        </action>
+        
+        <action name="showPersons" class="showPersonsAction">
+        	<result name="success">/jsp/showPersons.jsp</result>
+        </action>
+        
+        <action name="showOrgs" class="showOrgsAction">
+        	<result name="success">/jsp/showOrganizations.jsp</result>
+        </action>
+        
+        <action name="showDuties" class="showDutiesAction">
+        	<result name="success">/jsp/showDuties.jsp</result>
+        </action>
+        
+        <action name="getLxrs" class="lxrAction">
+        	<result name="success">/jsp/sendMessage.jsp</result>
+        </action>
+        
+        <action name="changePassword" class="changePasswordAction">
+        	<result name="success">/jsp/changePwdSuc.jsp</result>
+        	<result name="input">/jsp/changePassword.jsp</result>
+        </action>
+        
+        <action name="sendMessage" class="sendMessageAction">
+        	<result name="success">/jsp/sendMsgSuc.jsp</result>
+        </action>
+        
+        <action name="listRecs" class="listRecsAction">
+        </action>
+        
+        <action name="getOrgs" class="getOrgsAction">
+        </action>
+        
+        <action name="getDuties" class="getDutiesAction">
+        </action>
+        
+        <action name="editPerson" class="editPersonAction">
+        	<result name="success">/jsp/editPersonSuc.jsp</result>
+        </action>
+        
+        <action name="download" class="downloadAction">
+        	<result type="stream">
+        		<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+        		<param name="contentDisposition">
+        			 attachment;filename="${downloadFileName}"
+        		</param>
+        		<param name="inputName">downloadFile</param>
+        		<param name="bufferSize">4096</param>
+        	</result>
+        </action>
+        
+        
+        
+    </package>
+</struts>

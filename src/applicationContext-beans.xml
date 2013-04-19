@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- Service Setup -->
+        
+    <bean id="showMessageService" class="lnyswz.oa.service.impl.ShowMessagesServiceImpl">
+    	<property name="messageDAO" ref="messageDAO" />
+    </bean>
+    
+    <bean id="showPersonsService" class="lnyswz.oa.service.impl.ShowPersonsServiceImpl">
+    	<property name="personDAO" ref="personDAO" />
+    </bean>
+    
+    <bean id="showOrgsService" class="lnyswz.oa.service.impl.ShowOrgsServiceImpl">
+    	<property name="orgDAO" ref="orgDAO" />
+    </bean>
+    
+    <bean id="showDutiesService" class="lnyswz.oa.service.impl.ShowDutiesServiceImpl">
+    	<property name="dutyDAO" ref="dutyDAO" />
+    </bean>
+    
+    <bean id="lxrService" class="lnyswz.oa.service.impl.LxrServiceImpl">
+    	<property name="orgDAO" ref="orgDAO" />
+    	<property name="personDAO" ref="personDAO" />
+    </bean>
+    
+    <bean id="userService" class="lnyswz.oa.service.impl.UserServiceImpl">
+    	<property name="userDAO" ref="userDAO" />
+    </bean>
+    
+    <bean id="personService" class="lnyswz.oa.service.impl.PersonServiceImpl">
+    	<property name="personDAO" ref="personDAO" />
+    </bean>
+    
+    <bean id="messageService" class="lnyswz.oa.service.impl.MessageServiceImpl">
+    	<property name="messageDAO" ref="messageDAO" />
+    	<property name="personDAO" ref="personDAO" />
+    </bean>
+    
+    <bean id="orgService" class="lnyswz.oa.service.impl.OrgServiceImpl">
+    	<property name="orgDAO" ref="orgDAO" />
+    </bean>
+    
+    <bean id="dutyService" class="lnyswz.oa.service.impl.DutyServiceImpl">
+    	<property name="dutyDAO" ref="dutyDAO" />
+    </bean>
+    
+    <!-- DAO Setup -->
+    <bean id="userDAO" class="lnyswz.oa.dao.impl.UserDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />        
+    </bean>
+    <bean id="messageDAO" class="lnyswz.oa.dao.impl.MessageDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="personDAO" class="lnyswz.oa.dao.impl.PersonDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="orgDAO" class="lnyswz.oa.dao.impl.OrgDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="dutyDAO" class="lnyswz.oa.dao.impl.DutyDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+</beans>
+

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="lnyswz.oa.bean.Person"
+        table="t_person"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="int"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Person.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="name"
+            length="8"
+            not-null="true"
+            unique="true"
+        />
+
+        <property
+            name="sex"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="sex"
+            length="1"
+        />
+
+        <property
+            name="birth"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="birth"
+            length="10"
+        />
+		
+		<property
+            name="inPhone"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="inPhone"
+            length="5"
+        />
+        
+        <property
+            name="extPhone"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="extPhone"
+            length="11"
+        />
+        
+        <property
+            name="cellPhone"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="cellPhone"
+            length="11"
+        />
+        
+        <property
+            name="photo"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="photo"
+            length="50"
+        />
+
+        <property
+            name="description"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="description"
+            length="50"
+        />
+
+        <many-to-one
+            name="org"
+            class="lnyswz.oa.bean.Organization"
+            cascade="all"
+            outer-join="auto"
+            fetch="select"
+            update="true"
+            insert="true"
+            column="org"
+            lazy="false"
+        />
+
+        <many-to-one
+            name="duty"
+            class="lnyswz.oa.bean.Duty"
+            cascade="none"
+            
+            column="duty"
+        />
+
+        <one-to-one
+            name="user"
+            class="lnyswz.oa.bean.User"
+            cascade="all"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Person.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,98 @@
+/**
+ * 弹出窗口时候用到的这个两个css。
+ * .blockerDiv为阻挡层的css；.dialogDiv 为弹出DIV的css(即该dic的class="dialogDiv")
+ */
+
+/** 阻挡层 */
+.blockerDiv{
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 200%;
+  z-index: 9998;
+  background-color : #404040;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  filter: "alpha(opacity=50)";
+	
+}
+/** 显示在阻挡层上的div，宽度和高度在具体的div中自定义 边框颜色：#A8BED8 ，背景颜色:E9F0F6*/
+.dialogDiv {
+	z-index          : 9999;
+	position         : absolute;
+	background-color : #CADCEA;
+	background-repeat: repeat;
+}
+
+.dialogTitleDiv {
+	height: 10px;
+	width: 100%;
+	color: #215DC6;
+	font-weight: bold;
+	font-size: 13px;
+	vertical-align: middle;
+	margin-top: 3px;
+	margin-left: 5px;
+	margin-bottom: 3px;
+	margin-right: 5px;
+}
+#dialogTitleCloseSpan {
+	float: right;
+	background-repeat: no-repeat;
+	background-position: right center;
+	width: 15px;
+	text-align: right;
+	vertical-align: middle;
+	background-image: url(close.gif);
+}
+#dialogTitleStrSpan {
+	background-image: url(edit.gif);
+	background-repeat: no-repeat;
+	padding-left: 20px;
+	float: left;
+	text-align: left;
+	background-position: left;
+	width: 80%;
+}
+.dialogContentDiv {
+	border: 0.01cm solid #A8BED8;
+	height: auto;
+	width: 100%;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	line-height: 30px;
+	font-size: 13px;
+}
+.cssDialogTable_Content {
+	height: auto;
+	width: 100%;
+	font-size: 13px;
+	background-color: #FFFFFF;
+	padding-right: 2px;
+	padding-left: 10px;
+	line-height: 35px;
+}
+.cssDialogTable_Bar_saveBtn {
+	color: #215DC6;
+	padding-left: 15px;
+	background-image: url(save.gif);
+	background-position: left center;
+	float: left;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+	font-size: 13px;
+}
+.cssDialogTable_Bar {
+	height: 20px;
+	width: 100%;
+	background-color: #CADCEA;
+	text-align: left;
+	border-bottom-style: solid;
+	border-bottom-width: 0.01cm;
+	border-bottom-color: #A8BED8;
+	padding: 5px;
+	clear: both;
+}

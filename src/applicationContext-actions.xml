@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<bean id="loginAction" class="lnyswz.oa.action.LoginAction" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+	
+	<bean id="logoutAction" class="lnyswz.oa.action.LogoutAction">
+	</bean>
+	
+	<bean id="showMessagesAction" class="lnyswz.oa.action.ShowMessagesAction" scope="prototype">
+		<property name="showMessageService" ref="showMessageService" />
+	</bean>
+	
+	<bean id="showMessageAction" class="lnyswz.oa.action.ShowMessageAction" scope="prototype">
+		<property name="messageService" ref="messageService" />
+		<property name="personService" ref="personService" />
+	</bean>
+	
+	<bean id="sendedMessagesAction" class="lnyswz.oa.action.SendedMessagesAction" scope="prototype">
+		<property name="messageService" ref="messageService" />
+	</bean>
+	
+	<bean id="showPersonsAction" class="lnyswz.oa.action.ShowPersonsAction" scope="prototype">
+		<property name="showPersonsService" ref="showPersonsService" />
+	</bean>
+	
+	<bean id="showDutiesAction" class="lnyswz.oa.action.ShowDutiesAction" scope="prototype">
+		<property name="showDutiesService" ref="showDutiesService" />
+	</bean>
+	
+	<bean id="showOrgsAction" class="lnyswz.oa.action.ShowOrgsAction" scope="prototype">
+		<property name="showOrgsService" ref="showOrgsService" />
+	</bean>
+	
+	<bean id="lxrAction" class="lnyswz.oa.action.LxrAction" scope="prototype">
+		<property name="lxrService" ref="lxrService" />
+	</bean>
+	
+	<bean id="changePasswordAction" class="lnyswz.oa.action.ChangePasswordAction" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+	
+	<bean id="sendMessageAction" class="lnyswz.oa.action.SendMessageAction" scope="prototype">
+		<property name="messageService" ref="messageService" />
+	</bean>
+	
+	<bean id="listRecsAction" class="lnyswz.oa.action.ListRecsAction" scope="prototype">
+		<property name="lxrService" ref="lxrService" />
+	</bean>
+	
+	<bean id="getOrgsAction" class="lnyswz.oa.action.GetOrgsAction" scope="prototype">
+		<property name="orgService" ref="orgService" />
+	</bean>
+	
+	<bean id="getDutiesAction" class="lnyswz.oa.action.GetDutiesAction" scope="prototype">
+		<property name="dutyService" ref="dutyService" />
+	</bean>
+	
+	<bean id="editPersonAction" class="lnyswz.oa.action.EditPersonAction" scope="prototype">
+		<property name="personService" ref="personService" />
+		<property name="orgService" ref="orgService" />
+		<property name="dutyService" ref="dutyService" />
+	</bean>
+	
+	<bean id="downloadAction" class="lnyswz.oa.action.DownloadAction">
+	</bean>
+</beans>
+

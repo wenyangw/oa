@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="lnyswz.oa.bean.Message"
+        table="t_message"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="int"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Message.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="subject"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="subject"
+        />
+
+        <property
+            name="content"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="content"
+        />
+
+        <property
+            name="sendedTime"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="sendedTime"
+            length="20"
+            not-null="true"
+        />
+
+        <property
+            name="readTime"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="readTime"
+            length="20"
+        />
+
+        <property
+            name="isRead"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="isRead"
+            length="1"
+        />
+
+        <many-to-one
+            name="sender"
+            class="lnyswz.oa.bean.Person"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="sender"
+        />
+
+        <property
+            name="receiverType"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="receiverType"
+        />
+
+        <set
+            name="receivers"
+            table="t_receivers"
+            lazy="false"
+            cascade="none"
+            sort="unsorted"
+        >
+			<key column="messageId" />
+			<element type="int" column="receiverId" />
+        </set>
+
+        <set
+            name="attachments"
+            lazy="false"
+            cascade="none"
+            sort="unsorted"
+        >
+			<key column="messageId" />
+			<one-to-many class="lnyswz.oa.bean.Paper" />
+        </set>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Message.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>
